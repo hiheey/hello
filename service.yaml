@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: springboot-app
-          image: {ECR_Path값/repository 이름}:IMAGE_VERSION
+          image: {194453983284.dkr.ecr.ap-northeast-2.amazonaws.com/reca-ecr}:IMAGE_VERSION
           imagePullPolicy: Always
           ports:
             -containerPort: 8080
