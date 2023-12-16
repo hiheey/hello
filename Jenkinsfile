@@ -25,6 +25,7 @@ pipeline {
                 script {
                     docker.withRegistry("https://${ECR_PATH}", "ecr:${REGION}:${AWS_CREDENTIAL_ID}") {
                         def image = docker.build("${ECR_PATH}/${ECR_IMAGE}")
+                        image.tag("v${env.BUILD_NUMBER}")
                     }
                 }
             }
