@@ -3,14 +3,14 @@ pipeline {
 
     environment{
         REGION = 'ap-northeast-2'
-        EKS_API = {EKS Cluster Api Server Endpoint}
-        EKS_CLUSTER_NAME = {EKS Cluster 이름}
-       EKS_JENKINS_CREDENTIAL_ID = 'kubectl-deploy-credentials'
-       ECR_PATH = {ECR로 가서 Repository의 URI을 가져오되 /repository-name 은 제거}
-       ECR_IMAGE = 'ecr 이미지 이름'
-       AWS_CREDENTIAL_ID = 'AWSCredentials'
+        EKS_API = {EKS https://9BCA0CEB26E00BE8AD75E92BADC9CF5C.gr7.ap-northeast-2.eks.amazonaws.com}
+        EKS_CLUSTER_NAME = {EksCluster}
+       EKS_JENKINS_CREDENTIAL_ID = 'kubectl-deploy-credentials-GH'
+       ECR_PATH = {194453983284.dkr.ecr.ap-northeast-2.amazonaws.com}
+       ECR_IMAGE = 'reca-ecr'
+       AWS_CREDENTIAL_ID = 'AWSAccessKeyKang'
 
-    }
+ }
     stages {
         stage('Clone Repository'){
             checkout scm
@@ -41,4 +41,3 @@ pipeline {
             sh "rm output.yaml"
              }
         }
-}
