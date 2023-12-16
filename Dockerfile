@@ -6,9 +6,7 @@ WORKDIR /app
 
 # 필요한 패키지를 설치합니다.
 RUN python -m venv venv
-RUN /bin/bash -c "source venv/bin/activate"
-RUN pip install --upgrade pip
-RUN pip install flask flask-migrate flask-wtf
+RUN /bin/bash -c "source venv/bin/activate && pip install --upgrade pip && pip install flask flask-migrate flask-wtf"
 
 # 애플리케이션 코드를 복사합니다.
 COPY . .
@@ -18,10 +16,7 @@ ENV FLASK_APP=shop
 ENV FLASK_DEBUG=true
 
 # Flask 서비스를 실행합니다.
-CMD ["flask", "db", "init"]
-CMD ["flask", "db", "migrate"]
-CMD ["flask", "db", "upgrade"]
-CMD ["flask", "run", "--host=0.0.0.0", "--port=8080"]
+CMD ["bash", "-c", "flask db init && flask db migrate && flask db upgrade && flask run --host=0.0.0.0 --port=8080"]
 
 # 서비스 포트를 노출합니다.
 EXPOSE 8080
