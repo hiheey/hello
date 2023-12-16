@@ -33,12 +33,12 @@ pipeline {
         stage('Push to ECR') {
             steps {
                 script {
-                    def pushedImage = docker.image("${ECR_PATH}/${ECR_IMAGE}")
+                    docker.withRegistry("https://${ECR_PATH}", "ecr:${REGION}:${AWS_CREDENTIAL_ID}") {
+                        def pushedImage = docker.image("${ECR_PATH}/${ECR_IMAGE}")
                         pushedImage.push("v${env.BUILD_NUMBER}")
                     }
                 }
             }
-        }
 
         stage('CleanUp Images') {
             steps {
