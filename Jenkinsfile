@@ -21,7 +21,7 @@ pipeline {
             }
         }
         stage('Push to ECR'){
-            docker.withRegistry("https://{ECR_PATH}", "ecr:${REGION}:${AWS_CREDENTIAL_ID}"){
+            docker.withRegistry("https://${ECR_PATH}", "ecr:${REGION}:${AWS_CREDENTIAL_ID}"){
                 image.push("v${env.BUILD_NUMBER}")
             }
         }
@@ -32,7 +32,7 @@ pipeline {
             """
         }
         stage('Deploy to k8s'){
-        withKubeConfig([credentialsId: "{EKS_JENKINS_CREDENTIAL_ID}",
+        withKubeConfig([credentialsId: "${EKS_JENKINS_CREDENTIAL_ID}",
                         serverUrl: "${EKS_API}",
                         clusterName: "${EKS_CLUSTER_NAME}"]){
             sh "sed 's/IMAGE_VERSION/v${env.BUILD_ID}/g' service.yaml > output.yaml"
