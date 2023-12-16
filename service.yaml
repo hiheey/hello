@@ -15,7 +15,7 @@ spec:
         app: hello-world
     spec:
       containers:
-        - name: springboot-app
+        - name: phython-app
           image: {194453983284.dkr.ecr.ap-northeast-2.amazonaws.com/reca-ecr}:IMAGE_VERSION
           imagePullPolicy: Always
           ports:
