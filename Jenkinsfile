@@ -23,8 +23,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 script {
-                    docker.withRegistry("https://${ECR_PATH}", "ecr:${REGION}:${AWS_CREDENTIAL_ID}") {
-                        def image = docker.build("${ECR_PATH}/${ECR_IMAGE}")
+                    def customImage = docker.build("${ECR_PATH}/${ECR_IMAGE}")
                     }
                 }
             }
