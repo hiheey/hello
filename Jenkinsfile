@@ -7,7 +7,7 @@ pipeline {
         EKS_CLUSTER_NAME = {EksCluster}
        EKS_JENKINS_CREDENTIAL_ID = 'kubectl-deploy-credentials-GH'
        ECR_PATH = {194453983284.dkr.ecr.ap-northeast-2.amazonaws.com}
-       ECR_IMAGE = 'reca-ecr'
+       ECR_IMAGE = 'hello'
        AWS_CREDENTIAL_ID = 'AWSAccessKeyKang'
 
  }
