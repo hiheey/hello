@@ -19,7 +19,15 @@ pipeline {
                 }
             }
         }
-
+        
+        stage('Restart Docker') {
+            steps {
+                script {
+                    sh 'service docker restart'
+                }
+            }
+        }
+        
         stage('Docker Build') {
             steps {
                 script {
